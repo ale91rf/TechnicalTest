@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Factorial"
+            android:label="@string/title_activity_factorial" >
+        </activity>
+        <activity
+            android:name=".Decode"
+            android:label="@string/title_activity_decode" >
+        </activity>
     </application>
 
 </manifest>

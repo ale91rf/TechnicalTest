@@ -1,34 +1,66 @@
 package com.alejandroramirez.technicaltest;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements OnClickListener{
+
+	private Button btnProblem1;
+	private Button btnProblem2;
+	private Button btnProblem3;
+	private Intent i;
+
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		
+		getViews();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+	
+	
+	private void getViews() {
+		
+		btnProblem1 = (Button) findViewById(R.id.btnProblem1);
+		btnProblem1.setOnClickListener(this);
+		btnProblem2 = (Button) findViewById(R.id.btnProblem2);
+		btnProblem2.setOnClickListener(this);
+		btnProblem3 = (Button) findViewById(R.id.btnProblem3);
+		btnProblem3.setOnClickListener(this);
+		
 	}
 
+
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnProblem1:
+			i = new Intent(getApplicationContext(), Factorial.class);
+			startActivity(i);
+			break;
+
+		case R.id.btnProblem2:
+			i = new Intent(getApplicationContext(), Decode.class);
+			startActivity(i);
+			break;
+			
+		case R.id.btnProblem3:
+			
+			break;
 		}
-		return super.onOptionsItemSelected(item);
+		
 	}
+
+	
 }
