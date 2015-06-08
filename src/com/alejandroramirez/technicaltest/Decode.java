@@ -3,9 +3,12 @@ package com.alejandroramirez.technicaltest;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -99,7 +102,30 @@ public class Decode extends Activity implements OnClickListener{
 			}
 		    
 			
-			lblOriginal.setText(buf.toString());
+			String string = buf.toString();
+			
+			if(nFile == R.raw.file1){
+				
+				
+				 /*Hecho en python
+				
+				import base64
+				
+				print "VGhpcyB3YXMgc28gZWFzeSwgaXNuJ3QgaXQ/IFRoZSBuZXh0IG9uZSB3aWxsIGJlIHF1aXRlIG1v\"
+						+ "ncmUgZGlmZmljdWx0LgpPbmUgY2x1ZSwgaXMgb25lIG9mIHRoZSBzaW1wbGVzdHMgZW5jb2Rpb"
+						+ "mdz\nLCBidXQgeW91IG11c3QgZmluZCB0aGUga2V5".decode("base64")
+						
+				Tanto en Java como en PHP no daba el resultado esperado por temas de encoding*/
+		
+				
+
+				lblOriginal.setText(string);
+				
+			}else if(nFile == R.raw.file2){
+				
+			}
+			
+			
 		   
 		}
 		catch (Exception ex)
