@@ -33,8 +33,10 @@ public final class R {
         public static final int btnProblem2=0x7f080009;
         public static final int btnProblem3=0x7f08000a;
         public static final int lblCalculated=0x7f080007;
+        public static final int lblLink=0x7f08000d;
         public static final int lblOriginal=0x7f080004;
-        public static final int lblWebpage=0x7f08000b;
+        public static final int lstLinks=0x7f08000b;
+        public static final int pBar=0x7f08000c;
         public static final int textView1=0x7f080000;
         public static final int txtNumber=0x7f080005;
     }
@@ -43,6 +45,7 @@ public final class R {
         public static final int activity_factorial=0x7f030001;
         public static final int activity_main=0x7f030002;
         public static final int activity_webpage=0x7f030003;
+        public static final int activity_webpage_item=0x7f030004;
     }
     public static final class raw {
         public static final int file1=0x7f040000;

@@ -7,12 +7,14 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import utils.LinkAdapter;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -21,12 +23,21 @@ import android.provider.DocumentsContract.Document;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class Webpage extends Activity {
 	
 	private String TAG_URL = "http://www.visual-engin.com/Web/";
-	private TextView lblWebpage;
+	
+	private ArrayList<String> links;
+
+	private ListView lstLinks;
+	private LinkAdapter adapter;
+
+	private ProgressBar pBar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +46,8 @@ public class Webpage extends Activity {
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
-		lblWebpage = (TextView) findViewById(R.id.lblWebpage);
+		lstLinks = (ListView) findViewById(R.id.lstLinks);
+		pBar = (ProgressBar) findViewById(R.id.pBar);
 		
 		new getSourceCode().execute();
 	}
@@ -58,6 +70,7 @@ public class Webpage extends Activity {
         
 		@Override
         protected String doInBackground(String... urls) {
+			pBar.setVisibility(View.VISIBLE);
             try {
 
                 URL url;
@@ -105,10 +118,22 @@ public class Webpage extends Activity {
     }
 
 	private void Parser(String feed) {
-		Pattern regex = Pattern.compile("<a .*?href=\"(.*?)\"");
-		Matcher matches = regex.matcher(feed);
-		while (matches.find()) {
-			System.out.println(matches.group(1));
+		if(feed != null){
+			links = new ArrayList<>();
+			
+			
+			Pattern regex = Pattern.compile("<a .*?href=\"(.*?)\"");
+			Matcher matches = regex.matcher(feed);
+			while (matches.find()) {
+				System.out.println(matches.group(1));
+				links.add(matches.group(1));
+			}
+			adapter = new LinkAdapter(this, links);
+			lstLinks.setAdapter(adapter);
+			
 		}
+		
+		pBar.setVisibility(View.INVISIBLE);
+		
 	}
 }
