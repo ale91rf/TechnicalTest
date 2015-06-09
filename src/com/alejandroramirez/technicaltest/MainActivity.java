@@ -56,7 +56,8 @@ public class MainActivity extends Activity implements OnClickListener{
 			break;
 			
 		case R.id.btnProblem3:
-			
+			i = new Intent(getApplicationContext(), Webpage.class);
+			startActivity(i);
 			break;
 		}
 		

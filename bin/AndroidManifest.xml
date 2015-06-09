@@ -7,6 +7,8 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="22" />
+    
+   <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -29,6 +31,10 @@
         <activity
             android:name=".Decode"
             android:label="@string/title_activity_decode" >
+        </activity>
+        <activity
+            android:name=".Webpage"
+            android:label="@string/title_activity_webpage" >
         </activity>
     </application>
 
