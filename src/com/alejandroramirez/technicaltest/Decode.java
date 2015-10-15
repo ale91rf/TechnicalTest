@@ -3,14 +3,11 @@ package com.alejandroramirez.technicaltest;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
+
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -92,8 +89,10 @@ public class Decode extends Activity implements OnClickListener{
 			String readLine;
 			StringBuffer buf = new StringBuffer();
 
+			//le annado el "\n" para mostrar el mismo resultado que me sale en el servidor
+			//utilizando Python
 			while ((readLine = in.readLine()) != null) {
-				buf.append(readLine);
+				buf.append(readLine+"\n");
 			}
 
 
@@ -107,21 +106,27 @@ public class Decode extends Activity implements OnClickListener{
 			if(nFile == R.raw.file1){
 				
 				
-				 /*Hecho en python
+				 /*         Hecho en python en el servidor
 				
 				import base64
-				
-				print "VGhpcyB3YXMgc28gZWFzeSwgaXNuJ3QgaXQ/IFRoZSBuZXh0IG9uZSB3aWxsIGJlIHF1aXRlIG1v\"
-						+ "ncmUgZGlmZmljdWx0LgpPbmUgY2x1ZSwgaXMgb25lIG9mIHRoZSBzaW1wbGVzdHMgZW5jb2Rpb"
-						+ "mdz\nLCBidXQgeW91IG11c3QgZmluZCB0aGUga2V5".decode("base64")
 						
-				Tanto en Java como en PHP no daba el resultado esperado por temas de encoding*/
+				print "VGhpcyB3YXMgc28gZWFzeSwgaXNuJ3QgaXQ/IFRoZSBuZXh0IG9uZSB3aWxsIGJlIHF1aXRlIG1v".decode("base64")
+						
+				print "cmUgZGlmZmljdWx0LgpPbmUgY2x1ZSwgaXMgb25lIG9mIHRoZSBzaW1wbGVzdHMgZW5jb2Rpbmdz".decode("base64")		
+						
+				print "LCBidXQgeW91IG11c3QgZmluZCB0aGUga2V5".decode("base64")
+						
+				Aplico 3 veces el metodo decode por los \n        */
 		
 				
 
 				lblOriginal.setText(string);
 				
+				
+				
 			}else if(nFile == R.raw.file2){
+				
+				
 				
 			}
 			
@@ -136,4 +141,5 @@ public class Decode extends Activity implements OnClickListener{
 		
 		
 	}
+	
 }
